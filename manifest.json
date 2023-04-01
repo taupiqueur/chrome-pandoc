@@ -1,0 +1,32 @@
+{
+  "name": "Pandoc",
+  "version": "0.1.0",
+  "description": "Copy elements in webpages with a document converter program.",
+  "homepage_url": "https://github.com/taupiqueur/chrome-pandoc",
+  "manifest_version": 3,
+  "background": {
+    "type": "module",
+    "service_worker": "src/background.js"
+  },
+  "permissions": ["activeTab", "contextMenus", "nativeMessaging", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Copy with Pandoc"
+  },
+  "options_ui": {
+    "page": "src/options/options.html"
+  },
+  "icons": {
+    "16": "assets/haskell-logo@16px.png",
+    "32": "assets/haskell-logo@32px.png",
+    "48": "assets/haskell-logo@48px.png",
+    "128": "assets/haskell-logo@128px.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+C"
+      }
+    }
+  }
+}
