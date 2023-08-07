@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Copy elements in webpages with a document converter program.",
   "homepage_url": "https://github.com/taupiqueur/chrome-pandoc",
+  "author": "Mathieu Ablasou <taupiqueur.kanto@gmail.com>",
   "manifest_version": 3,
   "background": {
     "type": "module",
