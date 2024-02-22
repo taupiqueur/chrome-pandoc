@@ -13,7 +13,7 @@ Navigate to `chrome://extensions/shortcuts` to configure keyboard shortcuts.
 ### Configure the document converter program
 
 You can also configure the document converter program by importing and exporting settings
-in the **Options** page—Right-click the Pandoc toolbar button and select **Options**.
+in the “Options” page—Right-click the Pandoc toolbar button and select “Options”.
 
 Example configuration:
 
