@@ -51,6 +51,8 @@ See the [manual] for setup and usage instructions.
 
 [Manual]: docs/manual.md
 
+Pandoc is also documented via internal pages—Right-click the Pandoc toolbar button and select “Documentation”.
+
 ## Contributing
 
 Report bugs on the [issue tracker],

@@ -7,6 +7,8 @@
 import { pandoc } from './pandoc.js'
 import optionsWorker from './options/service_worker.js'
 
+const { TAB_GROUP_ID_NONE } = chrome.tabGroups
+
 // Where we will expose the data we retrieve from the storage.
 const storageCache = {
   converters: [
@@ -21,6 +23,18 @@ const storageCache = {
  * @returns {void}
  */
 function createMenuItems() {
+  chrome.contextMenus.create({
+    id: 'open_documentation',
+    title: 'Documentation',
+    contexts: ['action']
+  })
+
+  chrome.contextMenus.create({
+    id: 'open_support_chat',
+    title: 'Support Chat',
+    contexts: ['action']
+  })
+
   for (const [index, converter] of storageCache.converters.entries()) {
     chrome.contextMenus.create({
       id: index.toString(),
@@ -118,14 +132,51 @@ function onAction(tab) {
  *
  * https://developer.chrome.com/docs/extensions/reference/api/contextMenus#event-onClicked
  *
- * @param {chrome.contextMenus.OnClickData} clickedData
+ * @param {chrome.contextMenus.OnClickData} info
  * @param {chrome.tabs.Tab} tab
  * @returns {void}
  */
-function onMenuItemClicked(clickedData, tab) {
-  const converterIndex = parseInt(clickedData.menuItemId, 10)
-  const converterCommand = storageCache.converters[converterIndex]
-  pandoc(converterCommand, { tabId: tab.id, frameIds: [clickedData.frameId] }, clickedData)
+function onMenuItemClicked(info, tab) {
+  switch (info.menuItemId) {
+    case 'open_documentation':
+      openNewTabRight(tab, 'src/manual/manual.html')
+      break
+
+    case 'open_support_chat':
+      openNewTabRight(tab, 'https://web.libera.chat/gamja/#taupiqueur')
+      break
+
+    default:
+      const converterIndex = parseInt(info.menuItemId, 10)
+      const converterCommand = storageCache.converters[converterIndex]
+      pandoc(converterCommand, { tabId: tab.id, frameIds: [info.frameId] }, info)
+  }
+}
+
+/**
+ * Opens and activates a new tab to the right.
+ *
+ * @param {chrome.tabs.Tab} openerTab
+ * @param {string} url
+ * @returns {Promise<void>}
+ */
+async function openNewTabRight(openerTab, url) {
+  const createdTab = await chrome.tabs.create({
+    active: true,
+    url,
+    index: openerTab.index + 1,
+    openerTabId: openerTab.id,
+    windowId: openerTab.windowId
+  })
+
+  if (openerTab.groupId !== TAB_GROUP_ID_NONE) {
+    await chrome.tabs.group({
+      groupId: openerTab.groupId,
+      tabIds: [
+        createdTab.id
+      ]
+    })
+  }
 }
 
 /**
