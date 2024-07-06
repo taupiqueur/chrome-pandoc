@@ -51,7 +51,8 @@ See the [manual] for setup and usage instructions.
 
 [Manual]: docs/manual.md
 
-Pandoc is also documented via internal pages—Right-click the Pandoc toolbar button and select “Documentation”.
+Pandoc for Chrome is also documented via the extension’s internal pages—Right-click the Pandoc toolbar button
+and select “Documentation”.
 
 ## Contributing
 
