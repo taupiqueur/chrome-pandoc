@@ -35,6 +35,12 @@ function createMenuItems() {
     contexts: ['action']
   })
 
+  chrome.contextMenus.create({
+    id: 'open_sponsorship_page',
+    title: 'Sponsor this project',
+    contexts: ['action']
+  })
+
   for (const [index, converter] of storageCache.converters.entries()) {
     chrome.contextMenus.create({
       id: index.toString(),
@@ -144,6 +150,10 @@ function onMenuItemClicked(info, tab) {
 
     case 'open_support_chat':
       openNewTabRight(tab, 'https://web.libera.chat/gamja/#taupiqueur')
+      break
+
+    case 'open_sponsorship_page':
+      openNewTabRight(tab, 'https://github.com/sponsors/taupiqueur')
       break
 
     default:
