@@ -24,10 +24,10 @@
     "page": "src/options/options.html"
   },
   "icons": {
-    "16": "assets/haskell-logo@16px.png",
-    "32": "assets/haskell-logo@32px.png",
-    "48": "assets/haskell-logo@48px.png",
-    "128": "assets/haskell-logo@128px.png"
+    "16": "assets/pandoc-logo@16px.png",
+    "32": "assets/pandoc-logo@32px.png",
+    "48": "assets/pandoc-logo@48px.png",
+    "128": "assets/pandoc-logo@128px.png"
   },
   "commands": {
     "_execute_action": {
