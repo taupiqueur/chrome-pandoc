@@ -1,8 +1,19 @@
 # Pandoc for Chrome
 
+<img src="assets/pandoc-logo.svg" alt="" width="128" height="128" align="left">
+
 A browser extension that lets you copy elements in webpages with a document converter program—such as [Pandoc].
 
 [Pandoc]: https://pandoc.org
+
+**[Documentation] | [Changelog] | [Contributing]**
+
+**[Add to Chrome]**
+
+[Documentation]: docs/manual.md
+[Changelog]: CHANGELOG.md
+[Contributing]: CONTRIBUTING.md
+[Add to Chrome]: #Installation
 
 ## Installation
 
