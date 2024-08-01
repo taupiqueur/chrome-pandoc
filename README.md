@@ -13,7 +13,7 @@ A browser extension that lets you copy elements in webpages with a document conv
 [Documentation]: docs/manual.md
 [Changelog]: CHANGELOG.md
 [Contributing]: CONTRIBUTING.md
-[Add to Chrome]: #Installation
+[Add to Chrome]: #installation
 
 ## Installation
 
