@@ -80,13 +80,12 @@ function onInstalled(details) {
 /**
  * Handles the initial setup when the extension is first installed.
  *
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function onInstall() {
-  fetch('config.json')
-    .then((response) => response.json())
-    .then((defaults) => chrome.storage.sync.set(defaults))
-  chrome.tabs.create({
+async function onInstall() {
+  const defaults = await optionsWorker.getDefaults()
+  await chrome.storage.sync.set(defaults)
+  await chrome.tabs.create({
     active: true,
     url: 'src/manual/manual.html'
   })
@@ -96,15 +95,14 @@ function onInstall() {
  * Handles the setup when the extension is updated to a new version.
  *
  * @param {string} previousVersion
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function onUpdate(previousVersion) {
-  fetch('config.json')
-    .then((response) => response.json())
-    .then((defaults) => chrome.storage.sync.set({
-      ...defaults,
-      ...storageCache
-    }))
+async function onUpdate(previousVersion) {
+  const defaults = await optionsWorker.getDefaults()
+  await chrome.storage.sync.set({
+    ...defaults,
+    ...storageCache
+  })
 }
 
 /**
