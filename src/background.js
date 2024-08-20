@@ -86,6 +86,10 @@ function onInstall() {
   fetch('config.json')
     .then((response) => response.json())
     .then((defaults) => chrome.storage.sync.set(defaults))
+  chrome.tabs.create({
+    active: true,
+    url: 'src/manual/manual.html'
+  })
 }
 
 /**
