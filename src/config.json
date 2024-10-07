@@ -3,7 +3,26 @@
     {
       "name": "Markdown",
       "command": "pandoc",
-      "args": ["-f", "html", "-t", "markdown"]
+      "args": ["-f", "html", "-t", "gfm"]
+    },
+    {
+      "name": "AsciiDoc",
+      "command": "pandoc",
+      "args": ["-f", "html", "-t", "asciidoc"]
+    },
+    {
+      "name": "HTML",
+      "command": "cat"
+    },
+    {
+      "name": "Org",
+      "command": "pandoc",
+      "args": ["-f", "html", "-t", "org"]
+    },
+    {
+      "name": "RST",
+      "command": "pandoc",
+      "args": ["-f", "html", "-t", "rst"]
     }
   ]
 }
