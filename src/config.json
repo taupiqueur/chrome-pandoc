@@ -23,6 +23,11 @@
       "name": "RST",
       "command": "pandoc",
       "args": ["-f", "html", "-t", "rst"]
+    },
+    {
+      "name": "Typst",
+      "command": "pandoc",
+      "args": ["-f", "html", "-t", "typst"]
     }
   ]
 }
