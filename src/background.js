@@ -4,13 +4,26 @@
 // Service workers: https://developer.chrome.com/docs/extensions/develop/concepts/service-workers
 // Messaging: https://developer.chrome.com/docs/extensions/develop/concepts/messaging
 
+/**
+ * @typedef {object} Converter
+ * @property {string} name
+ * @property {string} command
+ * @property {string[]} [args=[]]
+ */
+
 import { pandoc } from './pandoc.js'
 import optionsWorker from './options/service_worker.js'
 import manualWorker from './manual/service_worker.js'
 
 const { TAB_GROUP_ID_NONE } = chrome.tabGroups
 
-// Where we will expose the data we retrieve from the storage.
+/**
+ * Cache where we will expose the data we retrieve from the storage.
+ *
+ * https://developer.chrome.com/docs/extensions/reference/api/storage#asynchronous-preload-from-storage
+ *
+ * @type {{ converters: Converter[] }}
+ */
 const storageCache = {
   converters: [
   ]
@@ -304,7 +317,9 @@ function onConnect(port) {
 }
 
 // Configure Pandoc.
-chrome.storage.sync.get((options) => Object.assign(storageCache, options))
+chrome.storage.sync.get((options) => {
+  Object.assign(storageCache, options)
+})
 
 // Set up listeners.
 // https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/events
