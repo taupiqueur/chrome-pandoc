@@ -134,8 +134,9 @@ function onOptionsChange(changes, areaName) {
     case 'sync':
       if (changes.converters.newValue) {
         storageCache.converters = changes.converters.newValue
-        chrome.contextMenus.removeAll()
-        createMenuItems()
+        chrome.contextMenus.removeAll().then(
+          createMenuItems
+        )
       }
       break
   }
